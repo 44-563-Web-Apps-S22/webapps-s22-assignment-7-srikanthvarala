@@ -38,6 +38,7 @@
 		<button onclick="makeNewDiv()">Add value</button>
         <button onclick="fetchItem()">Fetch</button>
         <button onclick="zap()">Zap values</button>
+        <button onclick = "removeDuplicate()">Unique</button>
 </body>
 <script>
 	function makeNewDiv()
@@ -79,6 +80,24 @@
                 console.log("We are getting rid of all the elements with that text");
              }
         }
+    }
+    function removeDuplicate(){
+        let queue_items = document.getElementsByClassName("queue");
+		for (let i = queue_items.length-1; i>0; i--) {
+				let element = queue_items[i].innerHTML;
+				for (let j = i-1; j>0;  j--) {
+					let elementInside = queue_items[j].innerHTML;
+					if (element == elementInside) {
+					console.log(queue_items[j])
+					queue_items[j].remove();
+					i--;
+					j--;
+				}
+
+					
+				}
+				
+			}
     }
 </script>
 </html>	
