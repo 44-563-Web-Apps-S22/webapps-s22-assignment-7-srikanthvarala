@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html> 
+<head>
+     <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style>
+<title>Queue</title>
+</head>
+
+
+<body>
+    <h1>Srikanth reddy Varala builds a reversed queue</h1>
+    <input type='text' id="text"><br>
+		<div class="flex-container" id="target">
+		  <div class="queue">row item 1</div>   
+		  <div class="queue">row item 2</div>  
+		  <div class="queue">row item 3</div>  
+		</div>
+	   
+	<p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add value</button>
+        <button onclick="fetchItem()">Fetch</button>
+        <button onclick="zap()">Zap values</button>
+</body>
+<script>
+	function makeNewDiv()
+    {
+		/* make the div and its text */
+		let element = document.createElement("div")
+        document.getElementById("text").value
+		element.innerHTML = document.getElementById("text").value;
+		element.className = "queue"
+
+		/* add it to the container */
+		let container = document.getElementById('target')
+		container.appendChild(element)
+		
+	}
+
+    function fetchItem()
+    {
+     var queueItems= document.getElementsByClassName("queue");
+     b=queueItems.length;
+     if(b>0)
+     { 
+           for (let i = 0; i < b; i++)
+         {
+                queueItems[b - 1].remove();
+         }
+     }
+    }
+    function zap()
+    {
+        var queue_items = document.getElementsByClassName("queue")
+        var length_ = queue_items.length;
+        var item = document.getElementById("text").value;
+        for (let i = 0; i < length_; i++)
+         {
+            if (item == queue_items[i].innerHTML)
+             {
+                queue_items[i].remove();
+                console.log("We are getting rid of all the elements with that text");
+             }
+        }
+    }
+</script>
+</html>	
